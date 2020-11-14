@@ -1,0 +1,1 @@
+# Mautic Message Extension Bundle
