@@ -1,0 +1,15 @@
+{
+  "name": "bastolen/mautic-message-extension-bundle",
+  "description": "Mautic plugin to send messages to contacts/leads",
+  "version": "0.0.0",
+  "type": "mautic-plugin",
+  "authors": [
+    {
+      "name": "Bas Tolen",
+      "email": "bas@bastolen.nl"
+    }
+  ],
+  "require": {
+    "mautic/composer-plugin": "^1.0"
+  }
+}
