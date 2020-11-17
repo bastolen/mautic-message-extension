@@ -7,6 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class MessageExtensionSMSFormBasic extends AbstractType
 {
+
+  const FORM_TYPE_NAME = 'message_extension_sms_form_basic';
+
   public function __construct()
   {
   }
@@ -29,6 +32,6 @@ class MessageExtensionSMSFormBasic extends AbstractType
 
   public function getName()
   {
-    return 'message_extension_sms_form_basic';
+    return self::FORM_TYPE_NAME;
   }
 }

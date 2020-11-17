@@ -6,6 +6,7 @@ use Mautic\CampaignBundle\CampaignEvents;
 use Mautic\CampaignBundle\Event as Events;
 use Mautic\CampaignBundle\Event\CampaignExecutionEvent;
 use Mautic\CoreBundle\EventListener\CommonSubscriber;
+use MauticPlugin\MauticMessageExtensionBundle\Form\Type\MessageExtensionSMSFormBasic;
 use MauticPlugin\MauticMessageExtensionBundle\Services\MessageService;
 
 class BasicSMSSubscriber extends CommonSubscriber
@@ -53,7 +54,7 @@ class BasicSMSSubscriber extends CommonSubscriber
     $action = [
       'label'       => 'message-extension.campaign.action.send-sms-basic',
       'description' => 'message-extension.campaign.action.send-sms-basic_desc',
-      'formType'    => 'message_extension_sms_form_basic',
+      'formType'    => MessageExtensionSMSFormBasic::FORM_TYPE_NAME,
       'eventName'   => self::TRIGGER,
     ];
 
