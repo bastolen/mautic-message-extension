@@ -28,4 +28,4 @@ After installation, in the campaign builder a new action appears. This action wi
 
 [cm.com]: https://cm.com
 [github.com/bastolen/mautic-message-extension/releases]: https://github.com/bastolen/mautic-message-extension/releases
-[cm.com/app/gateway/]: https://www.cm.com/app/gateway/
+[cm.com/app/gateway]: https://www.cm.com/app/gateway/
