@@ -27,10 +27,18 @@ class MessageService
     $this->helper = $helper;
   }
 
-  public function sendMessage(string $originalText, Lead $lead)
+  public function sendMessage(string $contact_number_field, string $originalText, bool $change_lang_code, string $default_lang_code = '', Lead $lead)
   {
     $message = $this->helper->getMessageText($lead, $originalText, true);
-    $number = $lead->getMobile();
+    $number = $lead->$contact_number_field;
+    $number = isset($number) ? $number : '';
+    $number = preg_replace('/[^0-9+]+/', '', $number);
+    if ($change_lang_code == true) {
+      if (substr($number, 0, 2) == '06') {
+        $number = $default_lang_code . substr($number, 1, strlen($number));
+      }
+    }
+
 
     [
       'cmSender' => $cmSender,
