@@ -4,7 +4,7 @@ With this plugin you will be able to send SMS messages using the [CM.com] Messag
 
 ## Usage
 
-After installation, in the campaign builder a new action appears. This action will send a message at the given time. If you want to use personal information in the message, you can use variables in the normal Mautic way. For example: `Hi {contactfield=firstname|there}` will result in `Hi Bas` or `Hi there` if no firstname was found. Any URL, passed in as Mautic variable, will be automatically shortened by [CM.com]
+After installation, in the campaign builder a new action appears. This action will send a message at the given time. If you want to use personal information in the message, you can use variables in the normal Mautic way. For example: `Hi {contactfield=firstname|there}` will result in `Hi Bas` or `Hi there` if no firstname was found. Any URL, passed in as Mautic variable, will be automatically shortened by [CM.com]. In the action you can also select the contact field that has the number you want to send the message to. Since [CM.com] wants to be able to send messages to multiple countries a landcode is required in the number. If it is not given, you can replace it in the action settings. To make sure the number starts wit `06` and fill the landcode including a `+` sign, so `+31` for The Netherlands.
 
 ## Installation
 
