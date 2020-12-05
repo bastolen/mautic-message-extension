@@ -32,7 +32,7 @@ class MessageService
     $message = $this->helper->getMessageText($lead, $originalText, true);
     $number = $lead->$contact_number_field;
     $number = isset($number) ? $number : '';
-    $$number = preg_replace('/[^0-9+]+/', '', $number);
+    $number = preg_replace('/[^0-9+]+/', '', $number);
     if ($change_lang_code == true) {
       if (substr($number, 0, 2) == '06') {
         $number = $default_lang_code . substr($number, 1, strlen($number));
