@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d38ffa318b68dea024000aa908dc45d",
+    "content-hash": "a4d8966af6880ad629d736e575d7d228",
     "packages": [
         {
             "name": "mautic/composer-plugin",
