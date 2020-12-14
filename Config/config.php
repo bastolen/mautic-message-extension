@@ -3,7 +3,7 @@
 namespace MauticPlugin\MauticMessageExtensionBundle;
 
 return [
-  'version'     => '0.2.0',
+  'version'     => '0.2.1',
   'author'      => 'Bas Tolen',
   'services'    => [
     'integrations' => [
@@ -40,7 +40,8 @@ return [
         'class' => Services\MessageService::class,
         'arguments' => [
           'mautic.http.connector',
-          'message_extension.helper'
+          'message_extension.helper',
+          'monolog.logger.mautic',
         ]
       ],
     ]

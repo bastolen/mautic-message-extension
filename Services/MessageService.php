@@ -5,6 +5,7 @@ namespace MauticPlugin\MauticMessageExtensionBundle\Services;
 use Joomla\Http\Http;
 use Mautic\LeadBundle\Entity\Lead;
 use MauticPlugin\MauticMessageExtensionBundle\Helpers\MessageHelper;
+use Psr\Log\LoggerInterface;
 
 class MessageService
 {
@@ -21,10 +22,16 @@ class MessageService
    */
   private $helper;
 
-  public function __construct(Http $connector, MessageHelper $helper)
+  /**
+   * @var LoggerInterface
+   */
+  private $logger;
+
+  public function __construct(Http $connector, MessageHelper $helper, LoggerInterface $logger)
   {
     $this->httpClient = $connector;
     $this->helper = $helper;
+    $this->logger = $logger;
   }
 
   public function sendMessage(string $contact_number_field, string $originalText, bool $change_lang_code, string $default_lang_code = '', Lead $lead)
@@ -56,6 +63,7 @@ class MessageService
     $response = $this->httpClient->post($url, json_encode($payload), [self::TOKEN_HEADER => $cmGateway, 'Content-Type' => 'application/json'], 60);
 
     if (!in_array($response->code, [200, 201])) {
+      $this->logger->error('SMS WITH CM.COM NOT SENT', array('response' => $response->body, 'body' => json_encode($payload)));
       throw new \OutOfRangeException('CM SMS service couldn\'t send message: ' . $response->code);
     }
   }
