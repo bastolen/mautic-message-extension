@@ -3,7 +3,7 @@
 namespace MauticPlugin\MauticMessageExtensionBundle;
 
 return [
-  'version'     => '0.2.2',
+  'version'     => '0.2.3',
   'author'      => 'Bas Tolen',
   'services'    => [
     'integrations' => [
