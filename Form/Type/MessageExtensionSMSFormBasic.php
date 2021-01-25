@@ -72,6 +72,19 @@ class MessageExtensionSMSFormBasic extends AbstractType
         'required'    => true,
       ]
     );
+
+    $builder->add(
+      'shorten_url',
+      'yesno_button_group',
+      [
+        'label_attr' => ['class' => 'control-label'],
+        'label'      => 'message-extension.forms.sms.shorten_url',
+        'attr'       => [
+          'class' => 'form-control',
+        ],
+        'required'    => true,
+      ]
+    );
   }
 
   public function getName()
