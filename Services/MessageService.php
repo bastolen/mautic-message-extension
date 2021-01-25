@@ -34,9 +34,9 @@ class MessageService
     $this->logger = $logger;
   }
 
-  public function sendMessage(string $contact_number_field, string $originalText, bool $change_lang_code, string $default_lang_code = '', Lead $lead)
+  public function sendMessage(string $contact_number_field, string $originalText, bool $change_lang_code, string $default_lang_code = '', bool $shorten_url = false, Lead $lead)
   {
-    $message = $this->helper->getMessageText($lead, $originalText, true);
+    $message = $this->helper->getMessageText($lead, $originalText, $shorten_url);
     $number = $lead->$contact_number_field;
     $number = isset($number) ? $number : '';
     $number = preg_replace('/[^0-9+]+/', '', $number);
