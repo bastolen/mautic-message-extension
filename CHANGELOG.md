@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 ## [0.2.2] - 2021-01-25
 
+### Fixed
+
+- Half translated string
+
+## [0.2.2] - 2021-01-25
+
 ### Added
 
 - Added option to suppress URL shortner
@@ -42,6 +48,7 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 Inial release 🎉
 
+[0.2.3]: https://github.com/bastolen/mautic-message-extension/releases/tag/0.2.3
 [0.2.2]: https://github.com/bastolen/mautic-message-extension/releases/tag/0.2.2
 [0.2.1]: https://github.com/bastolen/mautic-message-extension/releases/tag/0.2.1
 [0.2.0]: https://github.com/bastolen/mautic-message-extension/releases/tag/0.2.0
