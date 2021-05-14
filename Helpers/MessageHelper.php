@@ -4,24 +4,39 @@ namespace MauticPlugin\MauticMessageExtensionBundle\Helpers;
 
 use Mautic\LeadBundle\Entity\Lead;
 use Mautic\LeadBundle\Helper\TokenHelper;
-use Mautic\PluginBundle\Helper\IntegrationHelper;
-use MauticPlugin\MauticMessageExtensionBundle\Integration\MessageExtensionIntegration;
+use Mautic\IntegrationsBundle\Helper\IntegrationsHelper;
+use MauticPlugin\MauticMessageExtensionBundle\Integration\MauticMessageExtensionIntegration;
+use Mautic\IntegrationsBundle\Exception\IntegrationNotFoundException;
+use Mautic\PluginBundle\Entity\Integration;
 
 class MessageHelper
 {
   /**
-   * @var MessageExtensionIntegration
+   * @var MauticMessageExtensionIntegration
    */
   private $integration;
 
-  public function __construct(IntegrationHelper $integrationHelper)
+  public function __construct(IntegrationsHelper $integrationsHelper)
   {
-    $this->integration   = $integrationHelper->getIntegrationObject('MessageExtension');
+    $this->integration = $integrationsHelper->getIntegration(MauticMessageExtensionIntegration::NAME);
   }
 
-  public function getKeys()
+  private function getIntegrationEntity(): Integration
   {
-    return $this->integration->getKeys();
+    return $this->integration->getIntegrationConfiguration();
+  }
+
+  public function getKeys(): array
+  {
+    try {
+      $integration = $this->getIntegrationEntity();
+
+      return array_merge([
+        'isPublished' =>  (bool)$integration->getIsPublished()
+      ], $integration->getApiKeys());
+    } catch (IntegrationNotFoundException $e) {
+      return [];
+    }
   }
 
   private function formatProfileFields(Lead $lead, bool $shortenUrls)
