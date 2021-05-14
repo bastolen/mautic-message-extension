@@ -1,5 +1,7 @@
 # Mautic Message Extension Bundle
 
+> This plugin will **NOT** work with Mautic 2 and older
+
 With this plugin you will be able to send SMS messages using the [CM.com] Messaging API.
 
 ## Usage
