@@ -3,13 +3,22 @@
 namespace MauticPlugin\MauticMessageExtensionBundle;
 
 return [
-  'version'     => '0.2.3',
+  'version'     => '1.0.0',
   'author'      => 'Bas Tolen',
   'services'    => [
     'integrations' => [
-      'message_extension.integration' => [
-        'class'     => Integration\MessageExtensionIntegration::class,
-        'arguments' => [],
+      'mautic.integration.MauticMessageExtension' => [
+        'class'     => Integration\MauticMessageExtensionIntegration::class,
+        'tags'  => [
+          'mautic.integration',
+          'mautic.basic_integration',
+        ],
+      ],
+      'MauticMessageExtension.integration.configuration' => [
+        'class' => Integration\Support\ConfigSupport::class,
+        'tags'  => [
+          'mautic.config_integration',
+        ],
       ],
     ],
     'events' => [
@@ -23,15 +32,13 @@ return [
     'forms' => [
       'message_extension.forms.sms_form_basic' => [
         'class'     => Form\Type\MessageExtensionSMSFormBasic::class,
-        'arguments' => [],
-        'alias' => Form\Type\MessageExtensionSMSFormBasic::FORM_TYPE_NAME,
       ],
     ],
     'helpers' => [
       'message_extension.helper' => [
         'class' => Helpers\MessageHelper::class,
         'arguments' => [
-          'mautic.helper.integration'
+          'mautic.integrations.helper',
         ]
       ]
     ],

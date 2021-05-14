@@ -4,11 +4,13 @@ namespace MauticPlugin\MauticMessageExtensionBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Mautic\CoreBundle\Form\Type\YesNoButtonGroupType;
+use Mautic\LeadBundle\Form\Type\LeadFieldsType;
 
 class MessageExtensionSMSFormBasic extends AbstractType
 {
-
-  const FORM_TYPE_NAME = 'message_extension_sms_form_basic';
 
   public function __construct()
   {
@@ -18,7 +20,7 @@ class MessageExtensionSMSFormBasic extends AbstractType
   {
     $builder->add(
       'contact_number_field',
-      'leadfields_choices',
+      LeadFieldsType::class,
       [
         'label'                 => 'message-extension.forms.sms.number_field',
         'label_attr'            => ['class' => 'control-label'],
@@ -26,7 +28,7 @@ class MessageExtensionSMSFormBasic extends AbstractType
         'with_company_fields'   => true,
         'with_tags'             => true,
         'with_utm'              => true,
-        'empty_value'           => 'mautic.core.select',
+        'placeholder'           => 'mautic.core.select',
         'attr'                  => [
           'class'    => 'form-control',
         ],
@@ -36,7 +38,7 @@ class MessageExtensionSMSFormBasic extends AbstractType
 
     $builder->add(
       'change_lang_code',
-      'yesno_button_group',
+      YesNoButtonGroupType::class,
       [
         'label_attr' => ['class' => 'control-label'],
         'label'      => 'message-extension.forms.sms.change_lang_code',
@@ -49,7 +51,7 @@ class MessageExtensionSMSFormBasic extends AbstractType
 
     $builder->add(
       'default_lang_code',
-      'text',
+      TextType::class,
       [
         'label_attr' => ['class' => 'control-label'],
         'label'      => 'message-extension.forms.sms.default_lang_code',
@@ -62,7 +64,7 @@ class MessageExtensionSMSFormBasic extends AbstractType
 
     $builder->add(
       'message',
-      'textarea',
+      TextareaType::class,
       [
         'label_attr' => ['class' => 'control-label'],
         'label'      => 'message-extension.forms.sms.message',
@@ -75,7 +77,7 @@ class MessageExtensionSMSFormBasic extends AbstractType
 
     $builder->add(
       'shorten_url',
-      'yesno_button_group',
+      YesNoButtonGroupType::class,
       [
         'label_attr' => ['class' => 'control-label'],
         'label'      => 'message-extension.forms.sms.shorten_url',
@@ -85,10 +87,5 @@ class MessageExtensionSMSFormBasic extends AbstractType
         'required'    => true,
       ]
     );
-  }
-
-  public function getName()
-  {
-    return self::FORM_TYPE_NAME;
   }
 }

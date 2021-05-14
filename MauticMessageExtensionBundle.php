@@ -2,8 +2,8 @@
 
 namespace MauticPlugin\MauticMessageExtensionBundle;
 
-use Mautic\PluginBundle\Bundle\PluginBundleBase;
+use Mautic\IntegrationsBundle\Bundle\AbstractPluginBundle;
 
-class MauticMessageExtensionBundle extends PluginBundleBase
+class MauticMessageExtensionBundle extends AbstractPluginBundle
 {
 }
